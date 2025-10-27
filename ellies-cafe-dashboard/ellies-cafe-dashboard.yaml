@@ -1,0 +1,2587 @@
+schemaVersion: 3
+meta:
+  sourceVersionId: 019a272b-b3d7-7004-8d9e-23304f0a9cca # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
+  projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: Ellie's Cafe Dashboard
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status: null
+  categories: []
+  castDecimalsDefault: true
+  hexType: PROJECT
+  allowExecutionReordering: true
+  prerunApp: false
+  autoRerunApp: true
+  cachePublishedAppState: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+  refreshStalePublishedApp: null
+projectAssets:
+  dataConnections: []
+  envVars: []
+  secrets:
+    - secretName: secret_test
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections:
+    - dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba # [Demo] Hex Public Data (snowflake)
+  externalFileIntegrations: []
+cells:
+  - cellType: INPUT
+    cellId: 228b5a01-6105-48ec-afa8-c73d489797ad # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Date
+    config:
+      inputType: DATE
+      name: date
+      outputType: DATETIME
+      options:
+        enableTime: false
+        showRelativeDates: true
+        useDateRange: true
+      defaultValue:
+        - dateString: 2020-01-01
+        - dateString: 2021-02-01
+  - cellType: INPUT
+    cellId: 7b7dd1c3-85ce-4095-94a1-d80da176f77b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Tables
+    config:
+      inputType: DROPDOWN
+      name: tables
+      outputType: STRING
+      options:
+        valueOptions:
+          - events
+          - inventory_items
+          - orders
+          - users
+      defaultValue: users
+  - cellType: INPUT
+    cellId: 4e7feff1-7657-41f0-b38d-01a863847418 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Columns
+    config:
+      inputType: DROPDOWN
+      name: columns
+      outputType: STRING
+      options:
+        valueOptions:
+          - first_name
+          - last_name
+      defaultValue: last_name
+  - cellType: INPUT
+    cellId: 8c1f23d8-614a-474a-aca9-d07b56ae9033 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      inputType: DROPDOWN
+      name: input_1
+      outputType: STRING
+      options:
+        valueOptions:
+          - first_name
+          - last_name
+      defaultValue: first_name
+  - cellType: SQL
+    cellId: 9798b439-b087-4e51-af20-41348ebbac8e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Retrieve E-commerce Tables
+    config:
+      source: |
+        SELECT 
+            *
+        from user_count
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: test_frame
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: "'NONE'"
+            renameTo: null
+            size: 90
+            wrapText: null
+            displayFormat: null
+          - originalName: BROWSER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: EVENT_TYPE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 123
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 98
+            wrapText: null
+            displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: IP_ADDRESS
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_USERS
+            renameTo: null
+            size: 141
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SEQUENCE_NUMBER
+            renameTo: null
+            size: 150
+            wrapText: null
+            displayFormat: null
+          - originalName: SESSION_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: TRAFFIC_SOURCE
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: URI
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: "['FIRST_NAME', 'LAST_NAME']"
+            renameTo: null
+            size: 214
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0196d4db-9a03-700b-aaaf-9ebd4884823d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select *
+        from
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_15
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0196d4d4-7593-700b-aaae-256cb8a4dff1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM test_frame
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_14
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 123
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 98
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 101
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0196d4cc-3e0e-700b-aaac-70a9771b620c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM "DEMO_DATA"."ECOMMERCE".{{tables|sqlsafe}}
+        WHERE state = 'Gifu'
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_13
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 75
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 87
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 105
+            wrapText: null
+            displayFormat: null
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 242
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 190
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 123
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 98
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 107
+            wrapText: null
+            displayFormat: null
+          - originalName: LONGITUDE
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 131
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 179
+            wrapText: null
+            displayFormat: null
+          - originalName: TRAFFIC_SOURCE
+            renameTo: null
+            size: 151
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 101
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 2cd43d52-9cdf-4af3-85f8-977c132bdb92 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Total orders
+    config:
+      source: |-
+        select 
+            COUNT(order_id) total_orders
+        from "DEMO_DATA"."ECOMMERCE"."ORDERS"
+        WHERE delivered_at BETWEEN {{date_start}} AND {{date_end}}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: total_orders
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_ITEM
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: ORDER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: RETURNED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SHIPPED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATUS
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_ORDERS
+            renameTo: null
+            size: 139
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: f5c8989f-d370-420f-86ed-7e0ba9667481 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select 
+            COUNT(order_id) as total_orders
+        from "DEMO_DATA"."ECOMMERCE"."ORDERS"
+        WHERE YEAR(delivered_at) = 2019
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_2
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: TOTAL_ORDERS
+            renameTo: null
+            size: 139
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: METRIC
+    cellId: 8bba003b-8528-40eb-9f5d-708ee4ac7e7f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      title: Total Orders
+      valueVariableName: total_orders
+      showComparison: true
+      comparisonType: PERCENTAGE
+      comparisonVariableName: dataframe_2
+      comparisonFormat: POSITIVE_NEGATIVE
+      comparisonLabel: vs 2019
+      displayFormat:
+        format: NUMBER
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: -1
+        abbreviateLargeNumbers: false
+      valueColumn: TOTAL_ORDERS
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: TOTAL_ORDERS
+      comparisonRowIndex: 0
+      comparisonAggregate: null
+      valueResultVariable: total_oders_counter
+      comparisonResultVariable: comparison_value
+      outputResult: true
+  - cellType: SQL
+    cellId: 661236d0-8564-4236-99bf-5b6458352bac # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Total Completed Sales
+    config:
+      source: |-
+        select 
+            SUM(sale_price) as total_sales
+        from "DEMO_DATA"."ECOMMERCE"."ORDER_ITEMS"
+        WHERE status = 'Complete'
+        AND delivered_at BETWEEN {{date_start}} AND {{date_end}}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: total_completed_sales
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: INVENTORY_ITEM_ID
+            renameTo: null
+            size: 170
+            wrapText: null
+            displayFormat: null
+          - originalName: ORDER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: RETURNED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SALE_PRICE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SHIPPED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATUS
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_SALES
+            renameTo: null
+            size: 150
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: METRIC
+    cellId: 06ac7dcb-7583-4676-9a78-9bbc494f14c0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      title: Total Completed Sales
+      valueVariableName: total_completed_sales
+      showComparison: false
+      comparisonType: VALUE
+      comparisonVariableName: null
+      comparisonFormat: null
+      comparisonLabel: null
+      displayFormat:
+        format: CURRENCY
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: 0
+        abbreviateLargeNumbers: false
+      valueColumn: TOTAL_SALES
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: null
+      comparisonRowIndex: null
+      comparisonAggregate: null
+      valueResultVariable: total_completed_Sales_counter
+      comparisonResultVariable: comparison_value
+      outputResult: true
+  - cellType: SQL
+    cellId: cc7f2f79-9768-49b5-80be-b3fa66c09172 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: User Count
+    config:
+      source: |-
+        select  
+            COUNT(user_id)as num_of_users
+        from "DEMO_DATA"."ECOMMERCE"."USERS"
+        WHERE created_at BETWEEN {{date_start}} AND {{date_end}}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: user_count
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_USERS
+            renameTo: null
+            size: 141
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: METRIC
+    cellId: 774b07ab-3fd4-4c7b-85c1-e2a1818a02e8 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      title: Total User Count
+      valueVariableName: user_count
+      showComparison: false
+      comparisonType: VALUE
+      comparisonVariableName: null
+      comparisonFormat: null
+      comparisonLabel: null
+      displayFormat:
+        format: NUMBER
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: -1
+        abbreviateLargeNumbers: false
+      valueColumn: NUM_OF_USERS
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: null
+      comparisonRowIndex: null
+      comparisonAggregate: null
+      valueResultVariable: total_user_counter
+      comparisonResultVariable: comparison_value
+      outputResult: true
+  - cellType: SQL
+    cellId: 6f809b7a-f8f0-4b2e-9280-13e406ecbb56 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select
+            count(order_id) as num_of_returns
+        from "DEMO_DATA"."ECOMMERCE"."ORDERS"
+        where status = 'Returned'
+        AND delivered_at BETWEEN {{date_start}} AND {{date_end}}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_ITEM
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_RETURNS
+            renameTo: null
+            size: 157
+            wrapText: null
+            displayFormat: null
+          - originalName: ORDER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: RETURNED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SHIPPED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATUS
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: METRIC
+    cellId: 05d3e04d-0897-4a55-b21a-b2abf4d81c01 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      title: Total Refunds
+      valueVariableName: dataframe
+      showComparison: false
+      comparisonType: VALUE
+      comparisonVariableName: null
+      comparisonFormat: null
+      comparisonLabel: null
+      displayFormat:
+        format: NUMBER
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: -1
+        abbreviateLargeNumbers: false
+      valueColumn: NUM_OF_RETURNS
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: null
+      comparisonRowIndex: null
+      comparisonAggregate: null
+      valueResultVariable: total_refunds_counter
+      comparisonResultVariable: comparison_value
+      outputResult: true
+  - cellType: SQL
+    cellId: ba1e3d45-bf57-4157-9fb2-c15f9f0cb6ec # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Top 5 Product Categories
+    config:
+      source: |-
+        select 
+            product_category,
+            COUNT(id) as num_sold
+        from "DEMO_DATA"."ECOMMERCE"."INVENTORY_ITEMS"
+        WHERE sold_at IS NOT NULL
+        AND sold_at BETWEEN {{date_start}} AND {{date_end}}
+        GROUP BY 1
+        ORDER BY num_sold DESC
+        LIMIT 5
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: top_5_product_categories
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: COST
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_SOLD
+            renameTo: null
+            size: 114
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_BRAND
+            renameTo: null
+            size: 130
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_CATEGORY
+            renameTo: null
+            size: 160
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_DEPARTMENT
+            renameTo: null
+            size: 180
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_RETAIL_PRICE
+            renameTo: null
+            size: 200
+            wrapText: null
+            displayFormat: null
+          - originalName: SOLD_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0195f4c3-d9ff-711f-8b55-7145c618fad1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select 
+            product_category,
+            COUNT(id) as num_sold,
+            ROW_NUMBER() OVER(ORDER BY num_sold DESC) as rank
+        from "DEMO_DATA"."ECOMMERCE"."INVENTORY_ITEMS"
+        WHERE sold_at IS NOT NULL
+        AND sold_at BETWEEN {{date_start}} AND {{date_end}}
+        GROUP BY 1
+        QUALIFY rank = 3
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_12
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: NUM_SOLD
+            renameTo: null
+            size: 114
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_CATEGORY
+            renameTo: null
+            size: 198
+            wrapText: null
+            displayFormat: null
+          - originalName: RANK
+            renameTo: null
+            size: 83
+            wrapText: null
+            displayFormat: null
+          - originalName: ROW_NUMBER() OVER(ORDER BY NUM_SOLD)
+            renameTo: null
+            size: 304
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: CHARTV2
+    cellId: 7d440e2a-5a62-436f-8b4e-42d155638c49 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 74068f6b-1a4a-4bfe-9bb1-ba133adaf7c6
+            xAxis:
+              type: string
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              dataFrameColumn: PRODUCT_CATEGORY
+            series:
+              - id: 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
+                type: pie
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  aggregate: sum
+                  referenceLines: []
+                dataFrameColumns:
+                  - NUM_SOLD
+                colorDataFrameColumn: PRODUCT_CATEGORY
+                colorOrder: descending
+                color:
+                  type: series
+                  colorsBySeriesValues:
+                    Jeans: "#FF9DA6"
+                    Shorts: "#EECA3B"
+                    Intimates: "#B279A2"
+                    Tops & Tees: "#54A24B"
+                    Fashion Hoodies & Sweatshirts: "#EECA3B"
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                dataLabels:
+                  position: inside-center
+                legendTitle: Product Category
+                radius: 5
+                showAsPct: true
+            dataFrame: top_5_product_categories
+        settings:
+          font:
+            baseSize: 13
+          legend:
+            position: top
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings:
+        Plus: "#54A24B"
+        Swim: "#72B7B2"
+        Jeans: "#FF9DA6"
+        Pants: "#E45756"
+        Socks: "#9D755D"
+        Suits: "#4C78A8"
+        Active: "#F58518"
+        Shorts: "#EECA3B"
+        Skirts: "#B279A2"
+        Dresses: "#54A24B"
+        Leggings: "#BAB0AC"
+        Sweaters: "#E45756"
+        Intimates: "#B279A2"
+        Maternity: "#4C78A8"
+        Underwear: "#EECA3B"
+        Accessories: "#4C78A8"
+        Tops & Tees: "#54A24B"
+        Clothing Sets: "#72B7B2"
+        Pants & Capris: "#72B7B2"
+        Sleep & Lounge: "#FF9DA6"
+        Socks & Hosiery: "#BAB0AC"
+        Blazers & Jackets: "#E45756"
+        Outerwear & Coats: "#F58518"
+        Jumpsuits & Rompers: "#9D755D"
+        Suits & Sport Coats: "#F58518"
+        Fashion Hoodies & Sweatshirts: "#EECA3B"
+      resultVariable: chart_result
+      outputResult: true
+      displayType: CHART
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters:
+          - column: NUM_SOLD
+            fieldType: COLUMN
+            predicate:
+              op: GTE
+              arg: "35"
+            queryPath: []
+            columnType: NUMBER
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 1f2c4aab-e595-4857-9b0e-6c946fb10074 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Total Revenue MoM
+    config:
+      source: |-
+        select
+            delivered_at,
+            sum(sale_price) as total_revenue
+        from "DEMO_DATA"."ECOMMERCE"."ORDER_ITEMS"
+        WHERE status NOT IN ('Cancelled','Returned')
+        AND delivered_at BETWEEN {{date_start}} AND {{date_end}}
+        GROUP BY 1
+        ORDER BY 1
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: total_revenue
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: INVENTORY_ITEM_ID
+            renameTo: null
+            size: 170
+            wrapText: null
+            displayFormat: null
+          - originalName: ORDER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: RETURNED
+            renameTo: null
+            size: null
+            wrapText: null
+            displayFormat: null
+          - originalName: RETURNED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SALE_PRICE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: SHIPPED_AT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATUS
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_REVENUE
+            renameTo: null
+            size: 158
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: CHARTV2
+    cellId: 0198e881-35fa-799b-a595-4deafe78cc57 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 0198e881-35fa-799b-a595-2e561b79176e
+            xAxis:
+              type: datetime
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              timeUnit: yearweek
+              dataFrameColumn: DELIVERED_AT
+            series:
+              - id: 0198e881-d641-799b-a595-848bbfc2c13a
+                type: bar
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  aggregate: sum
+                dataFrameColumns:
+                  - TOTAL_REVENUE
+                colorOrder: ascending
+                color:
+                  type: static
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                barWidth: 1
+                orientation: vertical
+                layout: stacked
+            dataFrame: total_revenue
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: test
+      outputResult: true
+      displayType: CHART
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: EXPLORE
+    cellId: 0198e883-58db-799b-a595-eabdbf281e52 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: test
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 0198e883-6f93-799b-a599-9ed3c1de8ac5
+            value: DELIVERED_AT
+            channel: base-axis
+            dataType: TIMESTAMPTZ
+            seriesId: 0198e883-58db-799b-a595-d21b2e4fb3e2
+            fieldType: COLUMN
+            queryPath: []
+            scaleType: datetime
+            truncUnit: week
+            truncUnitConfig:
+              weekStart: monday
+          - id: 0198e883-74c9-799b-a59b-8f21f3d1bb25
+            value: TOTAL_REVENUE
+            channel: cross-axis
+            dataType: FLOAT
+            seriesId: 0198e883-58db-799b-a595-d21b2e4fb3e2
+            fieldType: COLUMN
+            queryPath: []
+            aggregation: Sum
+        details:
+          fields:
+            - value: DELIVERED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: TOTAL_REVENUE
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: both
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 0198e883-58db-799b-a595-d21b2e4fb3e2
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 0198e883-58db-799b-a595-d21b2e4fb3e2
+        columnTotals: true
+        visualizationType: chart
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 196
+            wrapText: null
+            displayFormat: null
+          - originalName: DELIVERED_AT_WEEK
+            renameTo: null
+            size: 196
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_REVENUE
+            renameTo: null
+            size: 158
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_REVENUE_SUM
+            renameTo: null
+            size: 187
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
+  - cellType: EXPLORE
+    cellId: 01993568-12dd-7aa8-acbd-ce6c2342c087 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: chart_result_2
+      colorMappings: {}
+      spec:
+        fields: []
+        details:
+          fields: []
+          enabled: true
+          showAllBaseTableDetailFields: false
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 01993568-12dd-7aa8-acbd-b77f08ff910b
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 01993568-12dd-7aa8-acbd-b77f08ff910b
+        columnTotals: true
+        visualizationType: pivot-table
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables:
+        - pivot_result
+      resultIncludeDetailColumns: false
+      height: null
+  - cellType: CHARTV2
+    cellId: a9f6d47b-395f-43fc-a6d7-f4f6cb16397c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Total Revenue Chart
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: feb05c8e-3a60-4fb0-bbc0-54f4e2382fda
+            xAxis:
+              type: datetime
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              title: Date
+              timeUnit: yearmonth
+              dataFrameColumn: DELIVERED_AT
+            series:
+              - id: 7199348c-6997-4f26-9bae-cd33c74e5507
+                type: line
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  title: Total Revenue
+                  aggregate: sum
+                  numberFormat:
+                    format: CURRENCY
+                    currency: USD
+                    columnType: NUMBER
+                    showSeparators: true
+                    numDecimalDigits: 0
+                    abbreviateLargeNumbers: false
+                dataFrameColumns:
+                  - TOTAL_REVENUE
+                colorOrder: ascending
+                color:
+                  type: static
+                  color: "#B279A2"
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                dataLabels:
+                  position: auto
+                point: false
+                stroke: solid
+            dataFrame: total_revenue
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: total_revenue_chart
+      outputResult: true
+      displayType: CHART
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: INPUT
+    cellId: 634b8235-45a8-4fb8-a80b-23615de35446 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: First name
+    config:
+      inputType: TEXT_INPUT
+      name: first_name
+      outputType: STRING
+      options: null
+      defaultValue: Brenda
+  - cellType: INPUT
+    cellId: c910adc9-25fd-4279-9ed5-8e8c1fc62e92 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Last name
+    config:
+      inputType: TEXT_INPUT
+      name: last_name
+      outputType: STRING
+      options: null
+      defaultValue: Jackson
+  - cellType: SQL
+    cellId: 43bdbd2a-1667-42c7-a2a8-fd38a1d9aa33 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT 
+            items.order_id,
+            items.created_at,
+            items.status,
+            users.first_name,
+            users.last_name,
+            ROUND(items.sale_price,0),
+            inventory.product_name
+        from "DEMO_DATA"."ECOMMERCE"."ORDER_ITEMS" items
+            JOIN "DEMO_DATA"."ECOMMERCE"."USERS" users
+            ON users.user_id = items.user_id
+            JOIN "DEMO_DATA"."ECOMMERCE"."INVENTORY_ITEMS" inventory
+            ON inventory.id = items.product_id
+        WHERE users.first_name = {{first_name}}
+        AND users.last_name = {{last_name}}
+        ORDER BY items.order_id
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_5
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: 112
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CREATED_AT
+            renameTo: null
+            size: 196
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: NUM_OF_ITEM
+            renameTo: null
+            size: 133
+            wrapText: null
+            displayFormat: null
+          - originalName: ORDER_ID
+            renameTo: null
+            size: 110
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_ID
+            renameTo: null
+            size: 124
+            wrapText: null
+            displayFormat: null
+          - originalName: PRODUCT_NAME
+            renameTo: null
+            size: 219
+            wrapText: null
+            displayFormat: null
+          - originalName: ROUND(ITEMS.SALE_PRICE,0)
+            renameTo: null
+            size: 218
+            wrapText: null
+            displayFormat: null
+          - originalName: SALE_PRICE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATUS
+            renameTo: null
+            size: 94
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: c35713b5-4156-4b54-b45c-d35f7536f8fc # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Dataframe 7
+    config:
+      source: |-
+        SELECT *
+        FROM "DEMO_DATA"."ECOMMERCE"."USERS"
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_7
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LONGITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: TRAFFIC_SOURCE
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: INPUT
+    cellId: b8bbdf1f-d08e-458f-b123-dbf20b304c7d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Input 2
+    config:
+      inputType: DROPDOWN
+      name: input_2
+      outputType: DYNAMIC
+      options:
+        valueOptions:
+          dfName: dataframe_7
+          columnName: STATE
+          variableName: dataframe_7['STATE']
+      defaultValue: Chiba
+  - cellType: SQL
+    cellId: 79e440ee-6c5e-45fc-aeb6-4b4b96a7d83c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select * 
+        from dataframe_7
+        WHERE state = {{input_2}}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_10
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: LONGITUDE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: TRAFFIC_SOURCE
+            renameTo: null
+            size: 140
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0195e8cd-3584-733f-94bc-91191855ec66 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM dataframe_10
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_11
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AGE
+            renameTo: null
+            size: 75
+            wrapText: null
+            displayFormat: null
+          - originalName: CITY
+            renameTo: null
+            size: 111
+            wrapText: null
+            displayFormat: null
+          - originalName: COUNTRY
+            renameTo: null
+            size: 105
+            wrapText: null
+            displayFormat: null
+          - originalName: EMAIL
+            renameTo: null
+            size: 191
+            wrapText: null
+            displayFormat: null
+          - originalName: FIRST_NAME
+            renameTo: null
+            size: 123
+            wrapText: null
+            displayFormat: null
+          - originalName: GENDER
+            renameTo: null
+            size: 98
+            wrapText: null
+            displayFormat: null
+          - originalName: LAST_NAME
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: LATITUDE
+            renameTo: null
+            size: 107
+            wrapText: null
+            displayFormat: null
+          - originalName: LONGITUDE
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: POSTAL_CODE
+            renameTo: null
+            size: 131
+            wrapText: null
+            displayFormat: null
+          - originalName: STATE
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: STREET_ADDRESS
+            renameTo: null
+            size: 152
+            wrapText: null
+            displayFormat: null
+          - originalName: USER_ID
+            renameTo: null
+            size: 101
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: PIVOT
+    cellId: 0196df56-a23f-7113-8524-27c2df74f631 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      castDecimals: true
+      dataframeName: null
+      resultVariable: pivot_result
+      pivotConfig:
+        rows: []
+        values: []
+        columns: []
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: true
+        showAggregations: false
+        columnAggregations: null
+  - cellType: MARKDOWN
+    cellId: 0196df56-a285-7113-8524-52b9665bd782 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: ""
+  - cellType: CODE
+    cellId: 0195ea8f-ecb7-733f-94c4-da3494c4fc9d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Python
+    config:
+      source: |-
+        df = dataframe_11
+        df.loc[df['FIRST_NAME'] == 'John']
+  - cellType: CODE
+    cellId: 0198c97d-cdf1-744d-8c4e-9a543c4ef1af # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: print(hex_run_context)
+  - cellType: CHARTV2
+    cellId: 01992fab-9565-7220-bd39-3b8d8d5fe431 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Chart 36
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 01992fab-9564-7220-bd39-161eb90c6873
+            xAxis:
+              type: datetime
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              timeUnit: year
+              dataFrameColumn: CREATED_AT
+            series:
+              - id: 01992fab-ca85-7220-bd39-6786b0bd6f53
+                type: bar
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                dataFrameColumns:
+                  - _HEX_COUNT_STAR_ARG_
+                colorOrder: ascending
+                color:
+                  type: static
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: custom
+                  fields:
+                    - id: 01992fde-354b-7996-abf2-75ebdf32e2f7
+                      type: number
+                      aggregate: sum
+                      dataFrameColumn: USER_ID
+                  includeAuto: true
+                barWidth: 1
+                orientation: vertical
+                layout: stacked
+            dataFrame: dataframe_7
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: chart_result_2
+      outputResult: true
+      displayType: CHART
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters:
+          - column: AGE
+            fieldType: COLUMN
+            predicate:
+              op: GTE
+              arg: "60"
+            queryPath: []
+            columnType: NUMBER
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: CHARTV2
+    cellId: 01992fc0-feb7-7220-bd3b-95d97e13cd95 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 01992fc0-feb7-7220-bd3b-6bbbf2726f15
+            xAxis:
+              type: datetime
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              timeUnit: year
+              dataFrameColumn: CREATED_AT
+            series:
+              - id: 01992fc1-0549-7220-bd3b-bd3be127d945
+                type: bar
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                dataFrameColumns:
+                  - _HEX_COUNT_STAR_ARG_
+                colorOrder: ascending
+                color:
+                  type: static
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: custom
+                  fields:
+                    - id: 01992fde-da45-7996-abf4-daae2e6878d8
+                      type: number
+                      aggregate: sum
+                      dataFrameColumn: USER_ID
+                  includeAuto: true
+                barWidth: 1
+                orientation: vertical
+                layout: stacked
+            dataFrame: dataframe_7
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: chart_result_3
+      outputResult: false
+      displayType: CHART
+      displayTableConfig: null
+appLayout:
+  visibleMetadataFields:
+    - NAME
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+  fullWidth: false
+  tabs:
+    - name: Dashboard
+      rows:
+        - columns:
+            - start: 40
+              end: 85
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 228b5a01-6105-48ec-afa8-c73d489797ad
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 30
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 8bba003b-8528-40eb-9f5d-708ee4ac7e7f
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+            - start: 30
+              end: 60
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 06ac7dcb-7583-4676-9a78-9bbc494f14c0
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+            - start: 60
+              end: 90
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 774b07ab-3fd4-4c7b-85c1-e2a1818a02e8
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+            - start: 90
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 05d3e04d-0897-4a55-b21a-b2abf4d81c01
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 85
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: a9f6d47b-395f-43fc-a6d7-f4f6cb16397c
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+            - start: 85
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 7d440e2a-5a62-436f-8b4e-42d155638c49
+                  sharedFilterId: null
+                  height: 550
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 0198c97d-cdf1-744d-8c4e-9a543c4ef1af
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 01992fab-9565-7220-bd39-3b8d8d5fe431
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 01992fc0-feb7-7220-bd3b-95d97e13cd95
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+    - name: User Order Search
+      rows:
+        - columns:
+            - start: 0
+              end: 50
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 634b8235-45a8-4fb8-a80b-23615de35446
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+            - start: 70
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: c910adc9-25fd-4279-9ed5-8e8c1fc62e92
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 43bdbd2a-1667-42c7-a2a8-fd38a1d9aa33
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+sharedFilters: []

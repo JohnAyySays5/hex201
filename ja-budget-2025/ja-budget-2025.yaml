@@ -1,0 +1,958 @@
+schemaVersion: 3
+meta:
+  sourceVersionId: 019a2718-963d-7004-8f91-95cc7caeb01b # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: null
+  projectId: 0197e5ca-8c8e-7004-851a-72cc0ea93885 # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: J&A Budget 2025
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status: null
+  categories: []
+  castDecimalsDefault: true
+  hexType: PROJECT
+  allowExecutionReordering: true
+  prerunApp: false
+  autoRerunApp: true
+  cachePublishedAppState: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+  refreshStalePublishedApp: null
+projectAssets:
+  dataConnections: []
+  envVars: []
+  secrets: []
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections: []
+  externalFileIntegrations: []
+cells:
+  - cellType: INPUT
+    cellId: 01981587-3a87-7227-8f3f-526aff53a731 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Date
+    config:
+      inputType: DATE
+      name: date
+      outputType: DATETIME
+      options:
+        enableTime: false
+        showRelativeDates: true
+        useDateRange: true
+      defaultValue:
+        - unit: YEAR
+          amount: 1
+          timezone: America/Los_Angeles
+          operation: AGO
+          displayName: Past year
+        - unit: DAY
+          amount: 0
+          timezone: America/Los_Angeles
+          operation: AGO
+          displayName: today
+  - cellType: SQL
+    cellId: 01981572-71f7-7227-8f30-66d68421e618 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: BOA Statement
+    config:
+      source: |-
+        SELECT *
+        FROM 'Bank of America Statement.csv'
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: bank_statement
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Running Bal.
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 01980b46-6ed2-7bb4-861d-8a27dbd4a9b1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Boa statment formatted
+    config:
+      source: |-
+        SELECT
+            Date,
+            strftime(Date, '%m/%Y') as Month,
+            Description,
+            Amount,
+            CAST(REPLACE(REPLACE(REPLACE(Amount, '$', ''), ',', ''), '(', '-') AS DOUBLE) as Amount_Num
+        FROM 'Bank of America Statement.csv'
+        WHERE Date BETWEEN {{date_start}} and {{date_end}}
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: BOA_Statment_Formatted
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Cast
+            renameTo: null
+            size: 124
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 100
+            wrapText: null
+            displayFormat: null
+          - originalName: Date_Format
+            renameTo: null
+            size: 122
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: Running Bal.
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: TRY_CAST(Amount AS INTEGER)
+            renameTo: null
+            size: 228
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 019973f4-de53-7bb9-8204-16e941f2b611 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT 
+            description,
+            COUNT(*)
+        FROM "BOA_Statment_Formatted"
+        GROUP BY 1
+        HAVING COUNT(*) > 1
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: dataframe_6
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Description
+            renameTo: null
+            size: 501
+            wrapText: null
+            displayFormat: null
+          - originalName: count_star()
+            renameTo: null
+            size: 118
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 28
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 01989312-1beb-7775-a8a5-f566cb264cc7 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM "BOA_Statment_Formatted"
+        WHERE Description LIKE '%HEX TECHNOLOGIES%'
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: dataframe
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 01981575-6df5-7227-8f32-a0f63af8f394 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Bank Refunds
+    config:
+      source: |-
+        SELECT *
+        FROM "BOA_Statment_Formatted"
+        WHERE Amount_Num NOT LIKE '%-%'
+        AND "Description" NOT LIKE '%PAYROLL%'
+        AND "Description" NOT LIKE '%Hex%'
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: Bank_refunds
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat:
+              format: CURRENCY
+              currency: USD
+              nanFormat: "null"
+              columnType: NUMBER
+              showSeparators: true
+              numDecimalDigits: 2
+              abbreviateLargeNumbers: false
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 01981577-a12d-7227-8f34-42208e822b8f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Hex Reimbursements
+    config:
+      source: |-
+        SELECT *
+        FROM "BOA_Statment_Formatted"
+        WHERE "Description" LIKE '%Hex%'
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: Hex_reimbursements
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 01981590-c504-7227-8f45-e5b13e30fd95 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: BOA Purchases
+    config:
+      source: |-
+        SELECT 
+            *
+        FROM BOA_Statment_Formatted
+        WHERE Amount_Num LIKE '%-%'
+        AND Description NOT LIKE '%DANIEL PAO%'
+        AND Description NOT LIKE '%Laura Ma%'
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: BOA_purchases
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 0198930e-92e5-7775-a8a4-189fe190539a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Boa actual
+    config:
+      source: |-
+        SELECT 
+            Date,
+            Month,
+            Description,
+            ABS("Amount_Num") AS "Amount_Num"
+        FROM "BOA_purchases"
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: BOA_Actual
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Amount_Num
+            renameTo: null
+            size: 127
+            wrapText: null
+            displayFormat: null
+          - originalName: Date
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Month
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: INPUT
+    cellId: 01989316-43f3-7775-a8a6-a97e8fa71404 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Boa table input
+    config:
+      inputType: TABLE
+      name: BOA_Table_Input
+      outputType: DYNAMIC
+      options:
+        value:
+          variableName: BOA_Actual
+      defaultValue:
+        headers:
+          - id: 836bed92-eab8-5f87-8595-288f1dc02abd
+            type: DATE
+            columnName: Date
+          - id: 8d877d08-919e-5805-8f1b-67ec74dfdb65
+            type: STRING
+            columnName: Month
+          - id: 2933d7b2-48c4-5257-9aab-1f9756cd274a
+            type: STRING
+            columnName: Description
+          - id: 21c2af0b-0ddc-5eba-88f0-301ae3e95c88
+            type: NUMBER
+            columnName: Amount_Num
+        contents:
+          21c2af0b-0ddc-5eba-88f0-301ae3e95c88:
+            - "0"
+            - "8.0"
+            - "240"
+            - "20.0"
+            - "5.51"
+            - "0.49"
+            - "185.0"
+            - "60.0"
+            - "26.44"
+            - "0.56"
+          2933d7b2-48c4-5257-9aab-1f9756cd274a:
+            - "BKOFAMERICA ATM 08/03 #XXXXX7305 WITHDRWL TASSAJARA DUBLIN CA"
+            - SQ *SCORPIO COFFEE 08/02 PURCHASE SACRAMENTO CA
+            - Zelle payment to BOULEVARD GARAGE DOORS, LLC for Spring Install"; Conf# o28kfdd7m"
+            - VENMO DES:PAYMENT ID:XXXXX01742222 INDN:JOHN ORTIZ CO ID:XXXXX81992 WEB
+            - MINUTEKEY 08/04 PURCHASE BOULDER CO
+            - KEEP THE CHANGE TRANSFER TO ACCT 3607 FOR 08/05/25
+            - VENMO DES:PAYMENT ID:XXXXX99105608 INDN:JOHN ORTIZ CO ID:XXXXX81992 WEB
+            - VENMO DES:PAYMENT ID:XXXXX99581581 INDN:JOHN ORTIZ CO ID:XXXXX81992 WEB
+            - TARGET T- 2800 08/08 MOBILE PURCHASE Dublin CA
+            - KEEP THE CHANGE TRANSFER TO ACCT 3607 FOR 08/08/25
+          836bed92-eab8-5f87-8595-288f1dc02abd:
+            - 2025-08-04
+            - 2025-08-04
+            - 2025-08-04
+            - 2025-08-04
+            - 2025-08-05
+            - 2025-08-05
+            - 2025-08-06
+            - 2025-08-07
+            - 2025-08-08
+            - 2025-08-08
+          8d877d08-919e-5805-8f1b-67ec74dfdb65:
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+            - 08/2025
+        rowCount: 10
+        totalRowCount: 10
+  - cellType: METRIC
+    cellId: 01981594-a6f0-7227-8f52-e0a7a7d99ffe # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Total Personal Spend
+    config:
+      title: Total Spent
+      valueVariableName: BOA_Table_Input
+      showComparison: false
+      comparisonType: VALUE
+      comparisonVariableName: null
+      comparisonFormat: null
+      comparisonLabel: null
+      displayFormat:
+        format: CURRENCY
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: -1
+        abbreviateLargeNumbers: false
+      valueColumn: Amount_Num
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: null
+      comparisonRowIndex: null
+      comparisonAggregate: null
+      valueResultVariable: Total_Spent
+      comparisonResultVariable: comparison_value
+      outputResult: true
+  - cellType: METRIC
+    cellId: 0198159c-498d-7227-8f55-ea4441a483d4 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      title: Hex Reimbursement
+      valueVariableName: Hex_reimbursements
+      showComparison: false
+      comparisonType: VALUE
+      comparisonVariableName: null
+      comparisonFormat: null
+      comparisonLabel: null
+      displayFormat:
+        format: CURRENCY
+        currency: USD
+        columnType: NUMBER
+        showSeparators: true
+        numDecimalDigits: -1
+        abbreviateLargeNumbers: false
+      valueColumn: Amount_Num
+      valueRowIndex: null
+      valueAggregate: Sum
+      comparisonColumn: null
+      comparisonRowIndex: null
+      comparisonAggregate: null
+      valueResultVariable: value
+      comparisonResultVariable: comparison_value_2
+      outputResult: true
+  - cellType: CHARTV2
+    cellId: 01987bd1-d1ba-7dd2-b8fe-e2e8802e578d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 01987bd1-d1b9-7dd2-b8fe-b8035e0bf326
+            xAxis:
+              type: string
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              dataFrameColumn: Month
+            series:
+              - id: 01987bd1-da40-7dd2-b8ff-0ddbe87ddc9a
+                type: bar
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  aggregate: sum
+                dataFrameColumns:
+                  - Amount_Formatted
+                colorOrder: ascending
+                color:
+                  type: static
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                barWidth: 1
+                orientation: vertical
+                layout: stacked
+            dataFrame: BOA_MINUS_RENT
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: chart_result
+      outputResult: true
+      displayType: CHART
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: []
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: COLLAPSIBLE
+    cellId: 0198931b-962f-7775-a8a7-68717e8f06f3 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: J+A Capital One
+    config:
+      labelStyle: AUTO
+      cells:
+        - cellType: INPUT
+          cellId: 0198931c-0a33-7775-a8a7-af688852b05c
+          cellLabel: Capital One
+          config:
+            inputType: FILE_UPLOAD
+            name: capital_one
+            outputType: DATA_FRAME
+            options: null
+            defaultValue:
+              id: 019a2718-9672-7004-8f91-b78eb190105d
+              name: 360 Checking Aug 10 2025 (1).csv
+              type: FILE
+  - cellType: SQL
+    cellId: 0198931e-7cf4-7775-a8a8-dfd298ce93d8 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: J+A Joint Account
+    config:
+      source: |-
+        SELECT
+            "Transaction Date",
+            "Transaction Description",
+            "Transaction Type",
+            "Transaction Amount"
+        FROM capital_one
+        -- WHERE "Transaction Date" BETWEEN {{date_start}} and {{date_end}}
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: capital_one_joint
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: Account Number
+            renameTo: null
+            size: 144
+            wrapText: null
+            displayFormat: null
+          - originalName: Balance
+            renameTo: null
+            size: 95
+            wrapText: null
+            displayFormat: null
+          - originalName: Transaction Amount
+            renameTo: null
+            size: 160
+            wrapText: null
+            displayFormat: null
+          - originalName: Transaction Date
+            renameTo: null
+            size: 143
+            wrapText: null
+            displayFormat: null
+          - originalName: Transaction Description
+            renameTo: null
+            size: 400
+            wrapText: null
+            displayFormat: null
+          - originalName: Transaction Type
+            renameTo: null
+            size: 144
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+appLayout:
+  visibleMetadataFields:
+    - NAME
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+    - LAST_RUN
+    - CATEGORIES
+    - STATUS
+    - TABLE_OF_CONTENTS
+  fullWidth: false
+  tabs:
+    - name: Tab 1
+      rows:
+        - columns:
+            - start: 0
+              end: 30
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 01981587-3a87-7227-8f3f-526aff53a731
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 0198931e-7cf4-7775-a8a8-dfd298ce93d8
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+    - name: Tab 2
+      rows:
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 0198930e-92e5-7775-a8a4-189fe190539a
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+sharedFilters: []

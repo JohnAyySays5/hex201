@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019a272b-b3d7-7004-8d9e-23304f0a9cca # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019a312c-250f-7005-866c-8c508aac3d47 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -82,6 +82,11 @@ cells:
           - first_name
           - last_name
       defaultValue: first_name
+  - cellType: CODE
+    cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: "!uv pip install sqlfluff"
   - cellType: SQL
     cellId: 9798b439-b087-4e51-af20-41348ebbac8e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: Retrieve E-commerce Tables
@@ -1002,6 +1007,120 @@ cells:
       valueResultVariable: total_refunds_counter
       comparisonResultVariable: comparison_value
       outputResult: true
+  - cellType: SQL
+    cellId: 019a2742-5ede-7000-934c-3901ec035ff0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Average Order Value
+    config:
+      source: |
+        SELECT
+            ROUND(AVG(sale_price), 2) AS avg_order_value
+        FROM DEMO_DATA.ECOMMERCE.ORDER_ITEMS
+        WHERE status = 'Complete'
+          AND delivered_at BETWEEN {{ date_start }} AND {{ date_end }}
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: avg_order_value
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: AVG_ORDER_VALUE
+            renameTo: null
+            size: 162
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: EXPLORE
+    cellId: 019a2742-9db1-7000-9352-522e8baa274a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Average Order Value Metric
+    config:
+      semanticProjectId: null
+      dataframe: avg_order_value
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019a2742-9dac-7000-9352-2b2f695a3216
+            value: AVG_ORDER_VALUE
+            channel: value
+            dataType: FLOAT
+            seriesId: 019a2742-9daa-7000-9352-24e85b4c944e
+            fieldType: DIMENSION
+            queryPath: []
+            aggregation: Sum
+        details:
+          fields:
+            - value: AVG_ORDER_VALUE
+              dataType: FLOAT
+              fieldType: DIMENSION
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019a2742-9daa-7000-9352-24e85b4c944e
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 019a2742-9daa-7000-9352-24e85b4c944e
+        columnTotals: true
+        rowSubtotals: true
+        columnSubtotals: true
+        visualizationType: pivot-table
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
   - cellType: SQL
     cellId: ba1e3d45-bf57-4157-9fb2-c15f9f0cb6ec # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: Top 5 Product Categories
@@ -2439,6 +2558,18 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 228b5a01-6105-48ec-afa8-c73d489797ad
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a
                   sharedFilterId: null
                   height: null
                   showLabel: true

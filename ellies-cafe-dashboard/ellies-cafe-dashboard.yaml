@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019a312c-250f-7005-866c-8c508aac3d47 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019a7e15-8c3a-7000-a3d6-f222c17314e1 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -17,7 +17,7 @@ meta:
   cachePublishedAppState: true
   logicQueryCacheTimeout: null
   publishedQueryCacheTimeout: null
-  refreshStalePublishedApp: null
+  refreshStalePublishedApp: false
 projectAssets:
   dataConnections: []
   envVars: []
@@ -749,6 +749,106 @@ cells:
       valueResultVariable: total_completed_Sales_counter
       comparisonResultVariable: comparison_value
       outputResult: true
+  - cellType: EXPLORE
+    cellId: 019a5661-a254-7220-bd78-5f2377ce6365 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: dataframe_5
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019a5663-3005-7220-bd7b-b4cbdcfbef8f
+            value: CREATED_AT
+            channel: base-axis
+            dataType: TIMESTAMPTZ
+            seriesId: 019a5661-a251-7220-bd78-3d134d85179e
+            fieldType: COLUMN
+            queryPath: []
+            truncUnit: month
+          - id: 019a5663-3edd-7220-bd7d-54451c473e63
+            title: Count of Records
+            value: _HEX_COUNT_STAR_ARG_
+            channel: cross-axis
+            dataType: FLOAT
+            seriesId: 019a5661-a251-7220-bd78-3d134d85179e
+            fieldType: MEASURE
+            queryPath: []
+            scaleType: number
+        details:
+          fields:
+            - value: ORDER_ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: CREATED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: STATUS
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: FIRST_NAME
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: LAST_NAME
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: ROUND(ITEMS.SALE_PRICE,0)
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: PRODUCT_NAME
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019a5661-a251-7220-bd78-3d134d85179e
+              text:
+                source: cross-axis
+                totalDataLabels:
+                  angle: 90
+                  position: outside-end
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 019a5661-a251-7220-bd78-3d134d85179e
+        columnTotals: true
+        visualizationType: chart
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
   - cellType: SQL
     cellId: cc7f2f79-9768-49b5-80be-b3fa66c09172 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: User Count
@@ -1078,7 +1178,7 @@ cells:
           fields:
             - value: AVG_ORDER_VALUE
               dataType: FLOAT
-              fieldType: DIMENSION
+              fieldType: COLUMN
               queryPath: []
           enabled: false
           showAllBaseTableDetailFields: true
@@ -1524,6 +1624,84 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
+  - cellType: EXPLORE
+    cellId: 019a7e13-fd2a-7330-a865-8b7aa897aa26 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: total_revenue
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019a7e15-446e-7330-a867-d142539aedcd
+            title: Count of Records
+            value: _HEX_COUNT_STAR_ARG_
+            channel: value
+            dataType: FLOAT
+            seriesId: 019a7e13-fd2a-7330-a865-7656955c8ea6
+            fieldType: MEASURE
+            queryPath: []
+          - id: 019a7e15-041d-7330-a867-5fa149ab046e
+            sort:
+              mode: measure-descending
+              measureOrder:
+                measureId: 019a7e15-446e-7330-a867-d142539aedcd
+            value: DELIVERED_AT
+            channel: row
+            dataType: TIMESTAMPTZ
+            seriesId: 019a7e13-fd2a-7330-a865-7656955c8ea6
+            fieldType: COLUMN
+            queryPath: []
+            truncUnit: day
+        details:
+          fields:
+            - value: DELIVERED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: TOTAL_REVENUE
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: false
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019a7e13-fd2a-7330-a865-7656955c8ea6
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 019a7e13-fd2a-7330-a865-7656955c8ea6
+        columnTotals: true
+        visualizationType: pivot-table
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
   - cellType: CHARTV2
     cellId: 0198e881-35fa-799b-a595-4deafe78cc57 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
@@ -2649,6 +2827,18 @@ appLayout:
                 - showSource: false
                   hideOutput: false
                   type: CELL
+                  cellId: 019a7e13-fd2a-7330-a865-8b7aa897aa26
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
                   cellId: 0198c97d-cdf1-744d-8c4e-9a543c4ef1af
                   sharedFilterId: null
                   height: null
@@ -2674,43 +2864,6 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 01992fc0-feb7-7220-bd3b-95d97e13cd95
-                  sharedFilterId: null
-                  height: null
-                  showLabel: true
-                  explorable: null
-    - name: User Order Search
-      rows:
-        - columns:
-            - start: 0
-              end: 50
-              elements:
-                - showSource: false
-                  hideOutput: false
-                  type: CELL
-                  cellId: 634b8235-45a8-4fb8-a80b-23615de35446
-                  sharedFilterId: null
-                  height: null
-                  showLabel: true
-                  explorable: null
-            - start: 70
-              end: 120
-              elements:
-                - showSource: false
-                  hideOutput: false
-                  type: CELL
-                  cellId: c910adc9-25fd-4279-9ed5-8e8c1fc62e92
-                  sharedFilterId: null
-                  height: null
-                  showLabel: true
-                  explorable: null
-        - columns:
-            - start: 0
-              end: 120
-              elements:
-                - showSource: false
-                  hideOutput: false
-                  type: CELL
-                  cellId: 43bdbd2a-1667-42c7-a2a8-fd38a1d9aa33
                   sharedFilterId: null
                   height: null
                   showLabel: true

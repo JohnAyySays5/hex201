@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019a7e15-8c3a-7000-a3d6-f222c17314e1 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019ae604-d419-7008-8ec7-7ef93dfa0793 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -14,9 +14,10 @@ meta:
   allowExecutionReordering: true
   prerunApp: false
   autoRerunApp: true
-  cachePublishedAppState: true
+  cachePublishedAppState: false
   logicQueryCacheTimeout: null
-  publishedQueryCacheTimeout: null
+  publishedQueryCacheTimeout:
+    type: disabled
   refreshStalePublishedApp: false
 projectAssets:
   dataConnections: []
@@ -28,7 +29,8 @@ sharedAssets:
   vcsPackages: []
   dataConnections:
     - dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba # [Demo] Hex Public Data (snowflake)
-  externalFileIntegrations: []
+  externalFileIntegrations:
+    - externalFileIntegrationId: 0199e987-eb8f-7000-aa46-b347c473cd36 # test (googledrive)
 cells:
   - cellType: INPUT
     cellId: 228b5a01-6105-48ec-afa8-c73d489797ad # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
@@ -722,6 +724,63 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
+  - cellType: SQL
+    cellId: 019ae120-ea4e-7aa4-85ae-b61cfbccdd81 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        select 
+            SUM(sale_price) as total_sales,
+            delivered_at
+        from "DEMO_DATA"."ECOMMERCE"."ORDER_ITEMS"
+        WHERE status = 'Complete'
+        AND delivered_at BETWEEN {{date_start}} AND {{date_end}}
+        GROUP BY 2
+      dataFrameCell: false
+      dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
+      resultVariableName: dataframe_16
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: DELIVERED_AT
+            renameTo: null
+            size: 196
+            wrapText: null
+            displayFormat: null
+          - originalName: TOTAL_SALES
+            renameTo: null
+            size: 158
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 46
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
   - cellType: METRIC
     cellId: 06ac7dcb-7583-4676-9a78-9bbc494f14c0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
@@ -776,35 +835,7 @@ cells:
             queryPath: []
             scaleType: number
         details:
-          fields:
-            - value: ORDER_ID
-              dataType: FLOAT
-              fieldType: COLUMN
-              queryPath: []
-            - value: CREATED_AT
-              dataType: TIMESTAMPTZ
-              fieldType: COLUMN
-              queryPath: []
-            - value: STATUS
-              dataType: VARCHAR
-              fieldType: COLUMN
-              queryPath: []
-            - value: FIRST_NAME
-              dataType: VARCHAR
-              fieldType: COLUMN
-              queryPath: []
-            - value: LAST_NAME
-              dataType: VARCHAR
-              fieldType: COLUMN
-              queryPath: []
-            - value: ROUND(ITEMS.SALE_PRICE,0)
-              dataType: FLOAT
-              fieldType: COLUMN
-              queryPath: []
-            - value: PRODUCT_NAME
-              dataType: VARCHAR
-              fieldType: COLUMN
-              queryPath: []
+          fields: []
           enabled: false
           showAllBaseTableDetailFields: true
         viewType: visualization
@@ -1394,66 +1425,12 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
-  - cellType: CHARTV2
+  - cellType: EXPLORE
     cellId: 7d440e2a-5a62-436f-8b4e-42d155638c49 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
     config:
-      height: null
-      chartSpec:
-        type: layered
-        layers:
-          - id: 74068f6b-1a4a-4bfe-9bb1-ba133adaf7c6
-            xAxis:
-              type: string
-              style:
-                grid:
-                  style: solid
-                ticks: {}
-                labels: {}
-              dataFrameColumn: PRODUCT_CATEGORY
-            series:
-              - id: 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
-                type: pie
-                axis:
-                  type: number
-                  style:
-                    grid:
-                      style: solid
-                    ticks: {}
-                    labels: {}
-                  aggregate: sum
-                  referenceLines: []
-                dataFrameColumns:
-                  - NUM_SOLD
-                colorDataFrameColumn: PRODUCT_CATEGORY
-                colorOrder: descending
-                color:
-                  type: series
-                  colorsBySeriesValues:
-                    Jeans: "#FF9DA6"
-                    Shorts: "#EECA3B"
-                    Intimates: "#B279A2"
-                    Tops & Tees: "#54A24B"
-                    Fashion Hoodies & Sweatshirts: "#EECA3B"
-                opacity:
-                  type: static
-                  value: 1
-                tooltip:
-                  type: auto
-                dataLabels:
-                  position: inside-center
-                legendTitle: Product Category
-                radius: 5
-                showAsPct: true
-            dataFrame: top_5_product_categories
-        settings:
-          font:
-            baseSize: 13
-          legend:
-            position: top
-          tooltip: true
-          selectionEnabled: false
-      chartSelection: {}
+      semanticProjectId: null
+      dataframe: top_5_product_categories
       colorMappings:
         Plus: "#54A24B"
         Swim: "#72B7B2"
@@ -1481,9 +1458,80 @@ cells:
         Jumpsuits & Rompers: "#9D755D"
         Suits & Sport Coats: "#F58518"
         Fashion Hoodies & Sweatshirts: "#EECA3B"
-      resultVariable: chart_result
-      outputResult: true
-      displayType: CHART
+      spec:
+        fields:
+          - id: 019adb14-4c48-7ff0-bd95-be07914a1312
+            axis:
+              grid:
+                style: solid
+              ticks: {}
+              hideTitle: false
+            sort:
+              mode: value-ascending
+            value: PRODUCT_CATEGORY
+            channel: base-axis
+            dataType: VARCHAR
+            seriesId: 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
+            fieldType: COLUMN
+            queryPath: []
+            scaleType: string
+            colorsBySeriesValues: {}
+          - id: 019adb14-4c49-7ff0-bd95-c1d6622ad3d8
+            axis:
+              grid:
+                style: solid
+              ticks: {}
+              hideTitle: false
+              referenceLines: []
+            value: NUM_SOLD
+            channel: cross-axis
+            dataType: FLOAT
+            seriesId: 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
+            fieldType: COLUMN
+            queryPath: []
+            scaleType: number
+            aggregation: Sum
+        details:
+          fields:
+            - value: PRODUCT_CATEGORY
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: NUM_SOLD
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+          enabled: true
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
+              text:
+                source: cross-axis
+                dataLabels:
+                  position: inside-end
+              type: bar
+              color:
+                source: color
+              opacity:
+                source: opacity
+                staticMode: true
+                staticValue: 1
+              tooltip:
+                includeAuto: true
+              barGrouped: true
+          settings:
+            font:
+              baseSize: 13
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 85e6d07c-09c0-4fcd-8faf-253aa9317ce1
+        columnTotals: true
+        visualizationType: chart
       displayTableConfig:
         pageSize: 50
         height: null
@@ -1495,14 +1543,7 @@ cells:
         defaultSortDirection: ASC
         conditionalFormatting: null
         calcs: null
-        filters:
-          - column: NUM_SOLD
-            fieldType: COLUMN
-            predicate:
-              op: GTE
-              arg: "35"
-            queryPath: []
-            columnType: NUMBER
+        filters: []
         columnProperties: []
         columnOrdering: null
         customColumnOrdering: null
@@ -1511,6 +1552,67 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
+      resultVariables:
+        - chart_result
+      resultIncludeDetailColumns: true
+      height: null
+  - cellType: CHARTV2
+    cellId: 019adb19-ef1d-7ff0-bdae-e22a947853ae # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        facet:
+          facetVertical:
+            type: string
+            dataFrameColumn: PRODUCT_CATEGORY
+        layers:
+          - id: 019adb19-ef1d-7ff0-bdae-bd7c0a2e753b
+            xAxis:
+              type: string
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              dataFrameColumn: PRODUCT_CATEGORY
+            series:
+              - id: 019adb19-f7a9-7ff0-bdaf-0bb111eea8d0
+                type: bar
+                axis:
+                  type: number
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  aggregate: sum
+                dataFrameColumns:
+                  - NUM_SOLD_SUM
+                colorOrder: ascending
+                color:
+                  type: static
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                barWidth: 1
+                orientation: horizontal
+                layout: grouped
+            dataFrame: chart_result
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings: {}
+      resultVariable: chart_result_4
+      outputResult: false
+      displayType: CHART
+      displayTableConfig: null
   - cellType: SQL
     cellId: 1f2c4aab-e595-4857-9b0e-6c946fb10074 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: Total Revenue MoM
@@ -1664,7 +1766,7 @@ cells:
               fieldType: COLUMN
               queryPath: []
           enabled: false
-          showAllBaseTableDetailFields: false
+          showAllBaseTableDetailFields: true
         viewType: visualization
         rowTotals: true
         chartConfig:
@@ -1804,15 +1906,7 @@ cells:
             queryPath: []
             aggregation: Sum
         details:
-          fields:
-            - value: DELIVERED_AT
-              dataType: TIMESTAMPTZ
-              fieldType: COLUMN
-              queryPath: []
-            - value: TOTAL_REVENUE
-              dataType: FLOAT
-              fieldType: COLUMN
-              queryPath: []
+          fields: []
           enabled: false
           showAllBaseTableDetailFields: true
         viewType: both
@@ -2718,6 +2812,146 @@ cells:
       outputResult: false
       displayType: CHART
       displayTableConfig: null
+  - cellType: SQL
+    cellId: 019a7fcf-b112-7006-9e0c-131fb2a79df0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: select * from "external-files/googledrive/test/Test.csv";
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: external_files_googledrive_test_Test
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: column 1
+            renameTo: null
+            size: 103
+            wrapText: null
+            displayFormat: null
+          - originalName: column 2
+            renameTo: null
+            size: 102
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 019a945e-8baf-7117-9996-c66a6b26c01d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: select * from "external-files/googledrive/test/360 Checking Aug 10 2025.csv";
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: external_files_googledrive_test_360_Checking_Aug_10
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: row-index-0
+            renameTo: null
+            size: 28
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: SQL
+    cellId: 019a945e-c09a-7117-999a-e607f309826f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: select * from "external-files/googledrive/test/Test.csv";
+      dataFrameCell: true
+      dataConnectionId: null
+      resultVariableName: external_files_googledrive_test_Test_2
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: column 1
+            renameTo: null
+            size: 103
+            wrapText: null
+            displayFormat: null
+          - originalName: column 2
+            renameTo: null
+            size: 102
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
 appLayout:
   visibleMetadataFields:
     - NAME
@@ -2868,4 +3102,20 @@ appLayout:
                   height: null
                   showLabel: true
                   explorable: null
-sharedFilters: []
+sharedFilters:
+  - name: ""
+    type: DATE
+    options:
+      enableTime: false
+      useDateRange: true
+      showRelativeDates: true
+      enableTimezonePicker: false
+    operator: DATE_BETWEEN
+    autoLinks:
+      - dataFrame: total_revenue
+        dataFrameColumn: DELIVERED_AT
+        includeNonAppCells: true
+    manualLinks: []
+    defaultValue:
+      - dateString: 2025-12-01
+      - dateString: 2025-12-19

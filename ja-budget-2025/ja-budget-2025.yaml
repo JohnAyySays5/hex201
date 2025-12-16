@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019b2940-0626-7003-8f82-4e1fba290f8e # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019b2941-719c-7003-ac7c-32d845cfce9c # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: null
   projectId: 0197e5ca-8c8e-7004-851a-72cc0ea93885 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: J&A Budget 2025
@@ -18,7 +18,7 @@ meta:
   logicQueryCacheTimeout: null
   publishedQueryCacheTimeout:
     type: disabled
-  refreshStalePublishedApp: true
+  refreshStalePublishedApp: false
 projectAssets:
   dataConnections: []
   envVars: []
@@ -824,7 +824,7 @@ cells:
             outputType: DATA_FRAME
             options: null
             defaultValue:
-              id: 019b2940-0655-7003-8f82-83e8a5b678f2
+              id: 019b2941-71d7-7003-ac7c-5c46d4991b60
               name: 360 Checking Aug 10 2025 (1).csv
               type: FILE
   - cellType: SQL

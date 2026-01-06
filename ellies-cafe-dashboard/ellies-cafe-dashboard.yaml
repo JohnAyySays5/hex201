@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019ae6e5-1259-7000-8f91-a5abd0ac8f8a # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019b90bc-aecd-7007-9c22-823d69821cb0 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -29,8 +29,7 @@ sharedAssets:
   vcsPackages: []
   dataConnections:
     - dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba # [Demo] Hex Public Data (snowflake)
-  externalFileIntegrations:
-    - externalFileIntegrationId: 0199e987-eb8f-7000-aa46-b347c473cd36 # test (googledrive)
+  externalFileIntegrations: []
 cells:
   - cellType: INPUT
     cellId: 228b5a01-6105-48ec-afa8-c73d489797ad # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
@@ -84,6 +83,15 @@ cells:
           - first_name
           - last_name
       defaultValue: first_name
+  - cellType: INPUT
+    cellId: 019b90bc-6139-7dd5-a848-8482fcd77114 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      inputType: FILE_UPLOAD
+      name: input_3
+      outputType: DATA_FRAME
+      options: null
+      defaultValue: null
   - cellType: CODE
     cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
@@ -367,6 +375,11 @@ cells:
             size: 75
             wrapText: null
             displayFormat: null
+          - originalName: BROWSER
+            renameTo: null
+            size: 108
+            wrapText: null
+            displayFormat: null
           - originalName: CITY
             renameTo: null
             size: 87
@@ -397,6 +410,16 @@ cells:
             size: 98
             wrapText: null
             displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 82
+            wrapText: null
+            displayFormat: null
+          - originalName: IP_ADDRESS
+            renameTo: null
+            size: 122
+            wrapText: null
+            displayFormat: null
           - originalName: LAST_NAME
             renameTo: null
             size: 118
@@ -415,6 +438,16 @@ cells:
           - originalName: POSTAL_CODE
             renameTo: null
             size: 131
+            wrapText: null
+            displayFormat: null
+          - originalName: SEQUENCE_NUMBER
+            renameTo: null
+            size: 168
+            wrapText: null
+            displayFormat: null
+          - originalName: SESSION_ID
+            renameTo: null
+            size: 277
             wrapText: null
             displayFormat: null
           - originalName: STATE
@@ -813,18 +846,10 @@ cells:
     cellLabel: null
     config:
       semanticProjectId: null
-      dataframe: dataframe_5
+      dataframe: dataframe_13
       colorMappings: {}
       spec:
         fields:
-          - id: 019a5663-3005-7220-bd7b-b4cbdcfbef8f
-            value: CREATED_AT
-            channel: base-axis
-            dataType: TIMESTAMPTZ
-            seriesId: 019a5661-a251-7220-bd78-3d134d85179e
-            fieldType: COLUMN
-            queryPath: []
-            truncUnit: month
           - id: 019a5663-3edd-7220-bd7d-54451c473e63
             title: Count of Records
             value: _HEX_COUNT_STAR_ARG_
@@ -834,11 +859,71 @@ cells:
             fieldType: MEASURE
             queryPath: []
             scaleType: number
+          - id: 019b476a-54ae-7aad-a1e5-7e4156fa17b2
+            value: CREATED_AT
+            channel: base-axis
+            dataType: TIMESTAMPTZ
+            seriesId: 019a5661-a251-7220-bd78-3d134d85179e
+            fieldType: COLUMN
+            queryPath: []
+            truncUnit: month
         details:
-          fields: []
+          fields:
+            - value: ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: USER_ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SEQUENCE_NUMBER
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SESSION_ID
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CREATED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: IP_ADDRESS
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CITY
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: STATE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: POSTAL_CODE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: BROWSER
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: TRAFFIC_SOURCE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: URI
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: EVENT_TYPE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
           enabled: false
-          showAllBaseTableDetailFields: true
-        viewType: visualization
+          showAllBaseTableDetailFields: false
+        viewType: source-table
         rowTotals: true
         chartConfig:
           series:
@@ -869,7 +954,17 @@ cells:
         conditionalFormatting: null
         calcs: null
         filters: null
-        columnProperties: []
+        columnProperties:
+          - originalName: CREATED_AT_MONTH
+            renameTo: null
+            size: 196
+            wrapText: null
+            displayFormat: null
+          - originalName: _HEX_COUNT_STAR_ARG_
+            renameTo: null
+            size: 144
+            wrapText: null
+            displayFormat: null
         columnOrdering: null
         customColumnOrdering: null
         pinnedColumns: null
@@ -2970,6 +3065,18 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 228b5a01-6105-48ec-afa8-c73d489797ad
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 30
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019b90bc-6139-7dd5-a848-8482fcd77114
                   sharedFilterId: null
                   height: null
                   showLabel: true

@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019b90bc-aecd-7007-9c22-823d69821cb0 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019c9b95-084a-700e-af2f-135d2a8181be # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -17,7 +17,9 @@ meta:
   cachePublishedAppState: true
   logicQueryCacheTimeout: null
   publishedQueryCacheTimeout:
-    type: disabled
+    type: fixed
+    unit: minutes
+    duration: 1
   refreshStalePublishedApp: false
 projectAssets:
   dataConnections: []
@@ -109,6 +111,7 @@ cells:
       dataConnectionId: null
       resultVariableName: test_frame
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -246,6 +249,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_15
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -283,6 +287,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_14
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -351,6 +356,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_13
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -495,6 +501,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: total_orders
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -589,6 +596,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_2
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -666,6 +674,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: total_completed_sales
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -773,6 +782,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_16
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -988,6 +998,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: user_count
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -1125,6 +1136,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -1247,6 +1259,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: avg_order_value
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -1365,6 +1378,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: top_5_product_categories
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -1469,6 +1483,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_12
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -1725,6 +1740,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: total_revenue
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2239,6 +2255,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_5
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2381,6 +2398,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_7
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2507,6 +2525,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_10
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2619,6 +2638,7 @@ cells:
       dataConnectionId: 1f850c58-98a1-449b-8691-283d6435a9ba
       resultVariableName: dataframe_11
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2916,6 +2936,7 @@ cells:
       dataConnectionId: null
       resultVariableName: external_files_googledrive_test_Test
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -2966,6 +2987,7 @@ cells:
       dataConnectionId: null
       resultVariableName: external_files_googledrive_test_360_Checking_Aug_10
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -3006,6 +3028,7 @@ cells:
       dataConnectionId: null
       resultVariableName: external_files_googledrive_test_Test_2
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -3047,6 +3070,22 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
+  - cellType: CODE
+    cellId: 019b94bd-5ea1-700c-a922-3a77ae26a446 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Sample DataFrame
+    config:
+      source: |-
+        import pandas as pd
+
+        # Create a sample dataframe
+        df_sample = pd.DataFrame({
+            'product_id': [1, 2, 3, 4, 5],
+            'product_name': ['Coffee', 'Tea', 'Pastry', 'Sandwich', 'Salad'],
+            'price': [3.50, 2.75, 4.00, 7.50, 6.00],
+            'category': ['Beverage', 'Beverage', 'Bakery', 'Food', 'Food']
+        })
+
+        df_sample
 appLayout:
   visibleMetadataFields:
     - NAME
@@ -3205,6 +3244,18 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 01992fc0-feb7-7220-bd3b-95d97e13cd95
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019b94bd-5ea1-700c-a922-3a77ae26a446
                   sharedFilterId: null
                   height: null
                   showLabel: true

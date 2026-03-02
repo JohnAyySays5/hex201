@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019cb082-e00b-7006-a466-c72e59f2a07f # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019cb084-b04d-7008-94bf-d9fb5d64b5ec # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -92,6 +92,13 @@ cells:
       outputType: DATA_FRAME
       options: null
       defaultValue: null
+  - cellType: CODE
+    cellId: 019cb083-bbd2-7009-af38-1928b18b7031 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Get Current Timestamp
+    config:
+      source: |-
+        now = datetime.now()
+        print(now)
   - cellType: CODE
     cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
@@ -3114,6 +3121,18 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 019b90bc-6139-7dd5-a848-8482fcd77114
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019cb083-bbd2-7009-af38-1928b18b7031
                   sharedFilterId: null
                   height: null
                   showLabel: true

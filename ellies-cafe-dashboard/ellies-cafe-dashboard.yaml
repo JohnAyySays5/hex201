@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019cb084-b04d-7008-94bf-d9fb5d64b5ec # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019d6eeb-38a6-7114-87f0-f84df00504a0 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -493,6 +493,242 @@ cells:
         pinIndexColumns: false
         showAggregations: false
         columnAggregations: null
+  - cellType: EXPLORE
+    cellId: 019d0c5b-6a84-7002-9f1a-e0df28f8755f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: dataframe_13
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019d0c5b-b7fc-7002-9f1f-2395c51e4fd3
+            value: CREATED_AT
+            channel: base-axis
+            dataType: TIMESTAMPTZ
+            seriesId: 019d0c5b-6a82-7002-9f1a-c52d6e601a07
+            fieldType: COLUMN
+            queryPath: []
+            truncUnit: month
+          - id: 019d0c5b-c9e2-7002-9f21-f33bfbc4d0e4
+            title: Count of Records
+            value: _HEX_COUNT_STAR_ARG_
+            channel: cross-axis
+            dataType: FLOAT
+            seriesId: 019d0c5b-6a82-7002-9f1a-c52d6e601a07
+            fieldType: MEASURE
+            queryPath: []
+        details:
+          fields:
+            - value: ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: USER_ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SEQUENCE_NUMBER
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SESSION_ID
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CREATED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: IP_ADDRESS
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CITY
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: STATE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: POSTAL_CODE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: BROWSER
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: TRAFFIC_SOURCE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: URI
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: EVENT_TYPE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019d0c5b-6a82-7002-9f1a-c52d6e601a07
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 019d0c5b-6a82-7002-9f1a-c52d6e601a07
+        columnTotals: true
+        visualizationType: chart
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
+  - cellType: EXPLORE
+    cellId: 019d0c5c-03d5-7002-9f26-6c1822a3002b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      semanticProjectId: null
+      dataframe: dataframe_13
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019d0c5c-18cd-7002-9f27-5b5afe94b28a
+            value: CREATED_AT
+            channel: row
+            dataType: TIMESTAMPTZ
+            seriesId: 019d0c5c-03d5-7002-9f26-536adfa043fb
+            fieldType: COLUMN
+            queryPath: []
+            truncUnit: day
+          - id: 019d0c5c-3bf2-7002-9f28-89dfcf18b2c8
+            title: Count of Records
+            value: _HEX_COUNT_STAR_ARG_
+            channel: value
+            dataType: FLOAT
+            seriesId: 019d0c5c-03d5-7002-9f26-536adfa043fb
+            fieldType: MEASURE
+            queryPath: []
+        details:
+          fields:
+            - value: ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: USER_ID
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SEQUENCE_NUMBER
+              dataType: FLOAT
+              fieldType: COLUMN
+              queryPath: []
+            - value: SESSION_ID
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CREATED_AT
+              dataType: TIMESTAMPTZ
+              fieldType: COLUMN
+              queryPath: []
+            - value: IP_ADDRESS
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: CITY
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: STATE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: POSTAL_CODE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: BROWSER
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: TRAFFIC_SOURCE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: URI
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+            - value: EVENT_TYPE
+              dataType: VARCHAR
+              fieldType: COLUMN
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019d0c5c-03d5-7002-9f26-536adfa043fb
+              type: bar
+          settings:
+            legend:
+              position: right
+          orientation: vertical
+          seriesGroups:
+            - - 019d0c5c-03d5-7002-9f26-536adfa043fb
+        columnTotals: true
+        visualizationType: pivot-table
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
   - cellType: SQL
     cellId: 2cd43d52-9cdf-4af3-85f8-977c132bdb92 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: Total orders
@@ -3091,6 +3327,156 @@ cells:
         })
 
         df_sample
+  - cellType: EXPLORE
+    cellId: 019d68ca-0556-7001-9e59-24e9f13606f2 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Product Prices
+    config:
+      semanticProjectId: null
+      dataframe: df_sample
+      colorMappings: {}
+      spec:
+        fields:
+          - id: 019d68ca-0553-7001-9e58-d3e397b09d72
+            axis:
+              grid:
+                style: none
+              ticks: {}
+              hideTitle: false
+              labelAngle: 0
+              maxTickLabelLimit: 180
+            sort:
+              mode: cross-axis-descending
+            title: Product
+            value: product_name
+            channel: base-axis
+            dataType: VARCHAR
+            seriesId: 019d68ca-054f-7001-9e58-ce1e5696e4c2
+            fieldType: DIMENSION
+            queryPath: []
+          - id: 019d68ca-0554-7001-9e58-de70da3661cb
+            axis:
+              grid:
+                style: solid
+              ticks: {}
+              hideTitle: false
+              labelAngle: 0
+              maxTickLabelLimit: 180
+            title: Price
+            value: price
+            channel: cross-axis
+            dataType: FLOAT
+            seriesId: 019d68ca-054f-7001-9e58-ce1e5696e4c2
+            fieldType: DIMENSION
+            queryPath: []
+            aggregation: Sum
+            displayFormat:
+              format: CURRENCY
+              currency: USD
+              columnType: NUMBER
+              showSeparators: true
+              numDecimalDigits: 2
+              abbreviateLargeNumbers: false
+        details:
+          fields:
+            - value: product_name
+              dataType: VARCHAR
+              fieldType: DIMENSION
+              queryPath: []
+            - value: price
+              dataType: FLOAT
+              fieldType: DIMENSION
+              queryPath: []
+          enabled: false
+          showAllBaseTableDetailFields: true
+        viewType: visualization
+        rowTotals: true
+        chartConfig:
+          series:
+            - id: 019d68ca-054f-7001-9e58-ce1e5696e4c2
+              text:
+                source: cross-axis
+                dataLabels:
+                  angle: 0
+                  position: outside-end
+              type: bar
+              barGrouped: false
+          settings:
+            legend:
+              position: right
+          orientation: horizontal
+          seriesGroups:
+            - - 019d68ca-054f-7001-9e58-ce1e5696e4c2
+        columnTotals: true
+        visualizationType: chart
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+      resultVariables: []
+      resultIncludeDetailColumns: false
+      height: null
+  - cellType: CODE
+    cellId: 019d68cb-d487-700b-b959-78db0c2a4137 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Product Prices with Average Reference Line
+    config:
+      source: |
+        
+        import plotly.graph_objects as go
+
+        avg_price = df_sample['price'].mean()
+        df_sorted = df_sample.sort_values('price', ascending=True)
+
+        fig = go.Figure()
+
+        fig.add_trace(go.Bar(
+            y=df_sorted['product_name'],
+            x=df_sorted['price'],
+            orientation='h',
+            text=[f'${p:,.2f}' for p in df_sorted['price']],
+            textposition='outside',
+            marker_color='#4E79A7'
+        ))
+
+        fig.add_vline(
+            x=avg_price,
+            line_dash='dash',
+            line_color='#E15759',
+            line_width=2,
+            annotation_text=f'Avg: ${avg_price:,.2f}',
+            annotation_position='top',
+            annotation_font_color='#E15759',
+            annotation_font_size=13
+        )
+
+        fig.update_layout(
+            title='Product Prices — Average Price Is $4.75',
+            xaxis_title='Price',
+            yaxis_title='Product',
+            xaxis_tickprefix='$',
+            xaxis_tickformat=',.2f',
+            xaxis_range=[0, 8.5],
+            template='plotly_white',
+            height=400,
+            margin=dict(l=80, r=40, t=60, b=50)
+        )
+
+        fig.show()
 appLayout:
   visibleMetadataFields:
     - NAME
@@ -3145,6 +3531,42 @@ appLayout:
                   hideOutput: false
                   type: CELL
                   cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: true
+                  hideOutput: false
+                  type: CELL
+                  cellId: 0196d4cc-3e0e-700b-aaac-70a9771b620c
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019d0c5b-6a84-7002-9f1a-e0df28f8755f
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+                  explorable: null
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 019d0c5c-03d5-7002-9f26-6c1822a3002b
                   sharedFilterId: null
                   height: null
                   showLabel: true
@@ -3269,7 +3691,7 @@ appLayout:
             - start: 0
               end: 120
               elements:
-                - showSource: false
+                - showSource: true
                   hideOutput: false
                   type: CELL
                   cellId: 019b94bd-5ea1-700c-a922-3a77ae26a446

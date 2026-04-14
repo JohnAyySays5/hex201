@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019d8df1-29e8-7002-9637-39bae5e24fc7 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019d8df6-3bbc-7003-89b2-34e0fd7b171e # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -19,7 +19,7 @@ meta:
   publishedQueryCacheTimeout:
     type: fixed
     unit: minutes
-    duration: 1
+    duration: 3
   refreshStalePublishedApp: true
 projectAssets:
   dataConnections: []
@@ -100,7 +100,7 @@ cells:
     config:
       source: |-
         now = datetime.now()
-        print(now) 
+        print(now)
   - cellType: CODE
     cellId: 019a312b-79cf-7aaa-87af-a460d9c7601a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null

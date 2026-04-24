@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019dc11d-ba6f-7001-8c49-cb153c90f5f1 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019dc120-7435-7bb7-8047-3b95a98d4b6a # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: The project analyzes e-commerce data to generate insights on total orders, completed sales, new user registrations, product returns, and top-selling product categories within a specified date range. It also visualizes revenue trends over time and the distribution of top product categories using line and pie charts.
   projectId: 3af828ee-5bd4-4091-9a88-5d4128845d76 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Ellie's Cafe Dashboard
@@ -13,7 +13,7 @@ meta:
   hexType: PROJECT
   allowExecutionReordering: true
   prerunApp: false
-  autoRerunApp: false
+  autoRerunApp: true
   cachePublishedAppState: true
   logicQueryCacheTimeout: null
   publishedQueryCacheTimeout:

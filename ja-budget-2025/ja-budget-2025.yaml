@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 019b2941-719c-7003-ac7c-32d845cfce9c # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: 019f5d91-ad92-74ba-96e0-275e6cf54c4a # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: null
   projectId: 0197e5ca-8c8e-7004-851a-72cc0ea93885 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: J&A Budget 2025
@@ -19,6 +19,8 @@ meta:
   publishedQueryCacheTimeout:
     type: disabled
   refreshStalePublishedApp: false
+  kernelImage: python311
+  kernelSize: medium
 projectAssets:
   dataConnections: []
   envVars: []
@@ -62,6 +64,7 @@ cells:
       dataConnectionId: null
       resultVariableName: bank_statement
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -130,6 +133,7 @@ cells:
       dataConnectionId: null
       resultVariableName: BOA_Statment_Formatted
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -221,6 +225,7 @@ cells:
       dataConnectionId: null
       resultVariableName: dataframe_6
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -274,6 +279,7 @@ cells:
       dataConnectionId: null
       resultVariableName: dataframe
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -344,6 +350,7 @@ cells:
       dataConnectionId: null
       resultVariableName: Bank_refunds
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -419,6 +426,7 @@ cells:
       dataConnectionId: null
       resultVariableName: Hex_reimbursements
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -490,6 +498,7 @@ cells:
       dataConnectionId: null
       resultVariableName: BOA_purchases
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -561,6 +570,7 @@ cells:
       dataConnectionId: null
       resultVariableName: BOA_Actual
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -824,7 +834,7 @@ cells:
             outputType: DATA_FRAME
             options: null
             defaultValue:
-              id: 019b2941-71d7-7003-ac7c-5c46d4991b60
+              id: 019f5d91-adf3-7462-833f-4633e6066ae8
               name: 360 Checking Aug 10 2025 (1).csv
               type: FILE
   - cellType: SQL
@@ -843,6 +853,7 @@ cells:
       dataConnectionId: null
       resultVariableName: capital_one_joint
       useRichDisplay: true
+      enablePreview: true
       sqlCellOutputType: PANDAS
       useQueryMode: false
       castDecimals: true
@@ -914,7 +925,7 @@ appLayout:
     - CATEGORIES
     - STATUS
     - TABLE_OF_CONTENTS
-  fullWidth: false
+  fullWidth: true
   tabs:
     - name: Tab 1
       rows:
